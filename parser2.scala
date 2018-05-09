@@ -38,3 +38,12 @@ def rep(p: Parser): Parser = {
 def rep1(p: Parser): Parser = {
   and(p, rep(p))
 }
+
+
+// Other common parser combinators
+
+def oneOf(parsers: Seq[Parser]): Parser = ???
+
+def noneOf(parsers: Seq[Parser]): Parser = ???
+
+def not(parser: Parser): Parser = ???
