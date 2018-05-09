@@ -22,4 +22,5 @@ def and(p1: Parser, p2: Parser): Parser = {
   (str: String) => p1(str).flatMap(rest => p2(rest))
 }
 
+def option(p: Parser): Parser = ???
 
