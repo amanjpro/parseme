@@ -35,4 +35,6 @@ def rep(p: Parser): Parser = {
   }
 }
 
-def rep1(p: Parser): Parser = ???
+def rep1(p: Parser): Parser = {
+  and(p, rep(p))
+}
