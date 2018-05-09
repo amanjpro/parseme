@@ -12,3 +12,6 @@ def char(ch: Char): Parser = (str: String) => {
 // Usage examples
 val a = char('a')
 val b = char('b')
+
+
+def or(p1: Parser, p2: Parser): Parser = ???
