@@ -26,3 +26,4 @@ def option(p: Parser): Parser = {
   or(p, ok)
 }
 
+def rep(p: Parser): Parser = ???
