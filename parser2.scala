@@ -26,4 +26,11 @@ def option(p: Parser): Parser = {
   or(p, ok)
 }
 
-def rep(p: Parser): Parser = ???
+def rep(p: Parser): Parser = {
+  (str: String) => {
+    p(str) match {
+      case None       => Some(str)
+      case Some(str2) => rep(p)(str2)
+    }
+  }
+}
