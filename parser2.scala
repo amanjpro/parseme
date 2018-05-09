@@ -17,3 +17,6 @@ val b = char('b')
 def or(p1: Parser, p2: Parser): Parser = {
   (str: String) => p1(str).orElse(p2(str))
 }
+
+def and(p1: Parser, p2: Parser): Parser = ???
+
