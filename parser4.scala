@@ -54,8 +54,15 @@ def rep1[T](p: Parser[T]): Parser[Seq[T]] = {
 
 // Other common parser combinators
 
-def oneOf[T](parsers: Seq[Parser[T]]): Parser[T] = ???
+def fail[T]: Parser[T] = _ => None
 
-def noneOf[T](parsers: Seq[Parser[T]]): Parser[T] = ???
+def oneOf[T](parsers: Seq[Parser[T]]): Parser[T] =
+  if(parsers.isEmpty) fail else or(parsers.head, oneOf(parsers.tail))
 
-def not[T](parser: Parser[T]): Parser[T] = ???
+def not[T](parser: Parser[T]): Parser[Option[T]] = str => {
+  val rest = parser(str)
+  if(rest.isEmpty) Some(None, str)
+  else None
+}
+
+def noneOf[T](parsers: Seq[Parser[T]]): Parser[Option[T]] = not(oneOf(parsers))
